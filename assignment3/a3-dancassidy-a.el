@@ -5,8 +5,8 @@
 "Hello World!"
 "Hello World!"
 
-'Dan Cassidy'
-; Error: (void-variable Cassidy)
+"Dan Cassidy"
+"Dan Cassidy"
 
 (+ 1 2 3) ; Calculate (1+2+3)
 6         ; Result: 6
