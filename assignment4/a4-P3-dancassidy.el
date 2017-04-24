@@ -3,6 +3,7 @@
 ;Complete the following
 
 (require 'cl)
+cl
 
 ;======================
 ;---- Problem 3 ---
@@ -12,11 +13,15 @@
 ;---------------
 ;DO NOT CHANGE THIS FUNCTION
 (defun my-LT(x y) (< x y))
+my-LT
 
 ;---------------
 ;ADD TWO MORE FUNCTIONS my-GT and my-EQ
 (defun my-GT(x y) (> x y))
+my-GT
+
 (defun my-EQ(x y) (= x y))
+my-EQ
 
 ;---------------
 ;DEFINE THE FUNCTION, BUT DO NOT CHANGE THE SIGNATURE
@@ -29,65 +34,134 @@
     )
   )
 )
+my-list-total-order
 
 ;---------------
 ;DO NOT CHANGE THIS FUNCTION
 (defun mlto-test(fn L)
   (dolist (l L) (print l) (print (my-list-total-order fn l))))
+mlto-test
 
 ;---------------
 ; call 1 ; check whether atoms within each list are equal; call and output are shown below.
 (mlto-test #'my-EQ (list '(1) '(2 1) '(5 4 3 2 1) '(1 2) '(1 2 3 4 5) '(1 2 3 4 5 1) '(4 1 2 3 2 3) '(1 1 1 2 1 1) '(2 2 2 2)))
 
+(1)
+
+"need length of at least 2"
+
+(2 1)
+
+nil
+
+(5 4 3 2 1)
+
+nil
+
+(1 2)
+
+nil
+
+(1 2 3 4 5)
+
+nil
+
+(1 2 3 4 5 1)
+
+nil
+
+(4 1 2 3 2 3)
+
+nil
+
+(1 1 1 2 1 1)
+
+nil
+
+(2 2 2 2)
+
+t
+nil
+
 ;---------------
 ; call 2 ; check whether atoms within each list are less than the next atom; call and output are shown below.;
 (mlto-test #'my-LT (list '(1) '(2 1) '(5 4 3 2 1) '(1 2) '(1 2 3 4 5) '(1 2 3 4 5 1) '(4 1 2 3 2 3) '(1 1 1 2 1 1) '(2 2 2 2)))
 
+(1)
+
+"need length of at least 2"
+
+(2 1)
+
+nil
+
+(5 4 3 2 1)
+
+nil
+
+(1 2)
+
+t
+
+(1 2 3 4 5)
+
+t
+
+(1 2 3 4 5 1)
+
+nil
+
+(4 1 2 3 2 3)
+
+nil
+
+(1 1 1 2 1 1)
+
+nil
+
+(2 2 2 2)
+
+nil
+nil
 
 ;---------------
 ; call 3 ; check whether atoms within each list are greater than the next atom; call and output are shown below.;
 
 (mlto-test #'my-GT (list '(1) '(2 1) '(5 4 3 2 1) '(1 2) '(1 2 3 4 5) '(1 2 3 4 5 1) '(4 1 2 3 2 3) '(1 1 1 2 1 1) '(2 2 2 2)))
 
+(1)
 
+"need length of at least 2"
 
+(2 1)
 
+t
 
-;======================
-;-- Prob 4 ---
-; same as previous problem, but using a different approach
-;======================
+(5 4 3 2 1)
 
-;---------------
-;DO NOT CHANGE THIS FUNCTION
-(defun my-test(fn2 x y) (funcall fn2 x y))
+t
 
-;---------------
-;DEFINE THE FUNCTION, BUT DO NOT CHANGE THE SIGNATURE
-(defun my-list(fn fn2 L)
-  (if (< (length L) 2)
-    "need length of at least 2"
-    (if (my-list fn fn2 (cdr L))
-      (funcall fn fn2 (car L) (car (cdr L)))
-      ()
-    )
-  )
-)
+(1 2)
 
-;---------------
-;calls and corresponding results are shown
+nil
 
-(my-list #'my-test #'= '(1))
-(my-list #'my-test #'> '(2 1))
-(my-list #'my-test #'< '(3 2 1))
-(my-list #'my-test #'> '(5 4 3 2 1))
-(my-list #'my-test #'> '(1 2))
-(my-list #'my-test #'< '(1 2 3))
-(my-list #'my-test #'= '(1 2 3 4))
-(my-list #'my-test #'< '(1 2 3 4 5))
-(my-list #'my-test #'> '(1 2 3 4 5 1))
-(my-list #'my-test #'< '(4 1 2 3 2 3))
-(my-list #'my-test #'string< '(a b c d e))
-(my-list #'my-test #'string< '(b a d))
-(my-list #'my-test #'string= '(abc abc abc))
-(my-list #'my-test #'string= '(abc abc abe))
+(1 2 3 4 5)
+
+nil
+
+(1 2 3 4 5 1)
+
+nil
+
+(4 1 2 3 2 3)
+
+nil
+
+(1 1 1 2 1 1)
+
+nil
+
+(2 2 2 2)
+
+nil
+nil
